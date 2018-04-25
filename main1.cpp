@@ -4,7 +4,6 @@
 #include <GL/glut.h>
 #include <iostream>
 #include "SOIL.h"
-//#include "point.h"
 
 GLint WIDTH =700;
 GLint HEIGHT=700;
@@ -16,18 +15,14 @@ float lx=0.0f,lz=-1.0f;
 // XZ position of the camera
 float x=-5.0f,z=6.0f, y=1.0f;
 
-//float right_door_pivot[] = {-2.55f, 1.25f, -12.10f};
-//float left_door_pivot[] = {-4.0f, 1.25f, -13.55f};
 
 GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};
-GLfloat light_position[] = {0.0, 1.0, 1.0, 1.0};
+GLfloat light_position[] = {0.0, 0.0, 0.0, 1.0};
 
 float angle = 0.0f;
 
-float right_door_angle = -45.0f;
-float left_door_angle = -45.0f;
-
-float glass_alpha = 0.5f;
+float right_door_angle = 0.0f;
+float left_door_angle = 0.0f;
 
 GLuint texture_id[20];
 
@@ -94,7 +89,7 @@ void drawCube(GLdouble size, int *tex) {
 }
 
 void drawOfficeDesk(float x, float z) {
-	glColor3f(1.0f, 1.0f, 1.0f);
+    glColor3f(0.1f, 0.1f, 0.1f);
 	
 	int office_desk_texture[] = {9, 9, 9, 9, 9, 9};
     
@@ -193,7 +188,7 @@ void drawProjectionQuad() {
 
 
 void drawChair(float x, float z) {
-    glColor3f(0.1f, 0.0f, 0.0f);	
+    glColor3f(0.4f, 0.3f, 0.25f);
     
     int chair_texture[] = {2, 2, 2, 2, 2, 2};
     
@@ -353,10 +348,34 @@ void drawTemple() {
     glutSolidCube(1.0);
     glPopMatrix();
     
-//Desenha parede da porta de entrada da igreja
+//Desenha parede da porta de entrada da igreja 1/4
     glPushMatrix();
-    glTranslatef(-0.5f, 3.7f, -2.25f); 
-    glScalef(13.0, 15.5, 1.0);  
+    glTranslatef(-0.5f, 5.15f, -2.25f); 
+    glScalef(13.0, 8.5, 1.0);  
+    glColor3f(0.917,0.8431,0.7372);
+    glutSolidCube(0.5);
+    glPopMatrix();
+    
+//Desenha parede da porta de entrada da igreja 2/4
+    glPushMatrix();
+    glTranslatef(-2.9f, 2.10f, -2.25f); 
+    glScalef(0.8, 8.5, 1.0);  
+    glColor3f(0.917,0.8431,0.7372);
+    glutSolidCube(0.5);
+    glPopMatrix();
+    
+//Desenha parede da porta de entrada da igreja 3/4
+    glPushMatrix();
+    glTranslatef(-0.5f, 2.10f, -2.25f); 
+    glScalef(0.8, 8.5, 1.0);  
+    glColor3f(0.917,0.8431,0.7372);
+    glutSolidCube(0.5);
+    glPopMatrix();
+    
+//Desenha parede da porta de entrada da igreja 4/4
+    glPushMatrix();
+    glTranslatef(1.87f, 2.10f, -2.25f); 
+    glScalef(0.6, 8.5, 1.0);  
     glColor3f(0.917,0.8431,0.7372);
     glutSolidCube(0.5);
     glPopMatrix();
@@ -368,6 +387,21 @@ void drawTemple() {
     glVertex3f(-0.5f,8.7f,-1.7f);
     glColor3f(0.917,0.8431,0.7372);
     glEnd();
+
+// Cruz
+//    glPushMatrix();
+//          glColor3f(0.4,0.2,0);
+//          glTranslatef(1.0, 8.7, 0);
+//          glScalef(0.5,0.198,2.48);
+//          glutSolidCube(0.2);
+//    glPopMatrix();
+
+//    glPushMatrix();
+//          glColor3f(0.4,0.2,0);
+//          glTranslatef(1.0, 8.5, 0);
+//          glScalef(0.4,3.3,0.5);
+//          glutSolidCube(0.2);
+//    glPopMatrix();
     
 //Desenha 1° linha horizontal da entrada da igreja
     glPushMatrix();
@@ -420,7 +454,7 @@ void drawTemple() {
 
 //parede do fundo do templo 
     glPushMatrix();
-    glColor3f(0.917,0.8431,0.7372);
+    glColor3f(0.9,0.9,0.9);
     glTranslatef(0.0f, 2.75f, -31.75f);
     glScalef(14.5, 5.5, 0.5); 
     glutSolidCube(1.0);
@@ -495,14 +529,11 @@ void drawTemple() {
     glPopMatrix();
 }
 
-
-//TODO: fazer rotaçao da porta no eixo y para simular abertura e fechamento da mesma
 void drawDoor() {
     //Porta do lado esquerdo
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(-5.6f, 1.9f, -9.0f);
-    //glRotatef(right_door_angle, 0, 1, 0);
     glScalef(1.8, 3.8, 0.3f);
     glutSolidCube(1.0);
     glPopMatrix();
@@ -511,7 +542,6 @@ void drawDoor() {
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(5.1f, 1.9f, -9.0f);
-    //glRotatef(right_door_angle, 0, 1, 0);
     glScalef(2.2, 3.8, 0.3f);
     glutSolidCube(1.0);
     glPopMatrix();  
@@ -520,7 +550,7 @@ void drawDoor() {
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(0.7f, 1.5f, -2.0f);
-    //glRotatef(right_door_angle, 0, 1, 0);
+    glRotatef(right_door_angle, 0, 1, 0);
     glScalef(2.0, 3.0, 0.3f);
     glutSolidCube(1.0);
     glPopMatrix();       
@@ -529,7 +559,7 @@ void drawDoor() {
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(-1.7f, 1.5f, -2.0f);
-    //glRotatef(left_door_angle, 0, 1, 0);
+    glRotatef(left_door_angle, 0, 1, 0);
     glScalef(2.0, 3.0, 0.3f);
     glutSolidCube(1.0);
     glPopMatrix();       
@@ -541,7 +571,6 @@ void drawWindows() {
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(0.7f, 5.5f, -2.0f);
-    //glRotatef(right_door_angle, 0, 1, 0);
     glScalef(2.0, 2.0, 0.3f);
     glutSolidCube(1.0);
     glPopMatrix();       
@@ -550,7 +579,6 @@ void drawWindows() {
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(-1.7f, 5.5f, -2.0f);
-    //glRotatef(left_door_angle, 0, 1, 0);
     glScalef(2.0, 2.0, 0.3f);
     glutSolidCube(1.0);
     glPopMatrix();       
@@ -578,38 +606,38 @@ void drawFloor() {
   
   //gramado lado esquerdo
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[1]);	 
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glTranslatef(-5.0f, 0.0f, 6.25f);
   glBegin(GL_QUADS);
-  glColor3f(1.0f, 1.0f, 1.0f);
-  glTexCoord2f(0.0f, 1.0f); 
+  glColor3f(0.0f, 0.3f, 0.0f);
+  glTexCoord2f(0.0f, 1.0f);
   glVertex3f(-2.5f, 0.0f, -11.75f);
   glTexCoord2f(0.0f, 0.0f);
   glVertex3f(-2.5f, 0.0f, 2.5f);
-  glTexCoord2f(1.0f, 0.0f); 
+  glTexCoord2f(1.0f, 0.0f);
   glVertex3f( 2.5f, 0.0f, 2.5f);
-  glTexCoord2f(1.0f, 1.0f); 
+  glTexCoord2f(1.0f, 1.0f);
   glVertex3f( 2.5f, 0.0f, -11.75f);
   glEnd();
-  glBindTexture(GL_TEXTURE_2D, 0);	 
+  glBindTexture(GL_TEXTURE_2D, 0);
   glPopMatrix();
   
   //gramado lado direito
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[1]);	 
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glTranslatef(3.25f, 0.0f, 4.5f);
   glBegin(GL_QUADS);
-  glColor3f(1.0f, 1.0f, 1.0f);
-  glTexCoord2f(0.0f, 1.0f); 
+  glColor3f(0.0f, 0.3f, 0.0f);
+  glTexCoord2f(0.0f, 1.0f);
   glVertex3f(-4.25f, 0.0f, -10.0f);
   glTexCoord2f(0.0f, 0.0f);
   glVertex3f(-4.25f, 0.0f, 4.25f);
-  glTexCoord2f(1.0f, 0.0f); 
+  glTexCoord2f(1.0f, 0.0f);
   glVertex3f( 4.25f, 0.0f, 4.25f);
-  glTexCoord2f(1.0f, 1.0f); 
+  glTexCoord2f(1.0f, 1.0f);
   glVertex3f( 4.25f, 0.0f, -10.0f);
   glEnd();
-  glBindTexture(GL_TEXTURE_2D, 0);	 
+  glBindTexture(GL_TEXTURE_2D, 0);
   glPopMatrix();
   
   //piso entrada
@@ -617,7 +645,7 @@ void drawFloor() {
   glBindTexture(GL_TEXTURE_2D, texture_id[8]);	 
   glTranslatef(-1.75f, 0.0f, 4.5f);
   glBegin(GL_QUADS);
-  glColor3f(1.0f, 1.0f, 1.0f);
+  glColor3f(0.0f, 0.3f, 0.0f);
   glTexCoord2f(0.0f, 1.0f); 
   glVertex3f(-0.75f, 0.0f, -10.0f);
   glTexCoord2f(0.0f, 0.0f);
@@ -660,10 +688,7 @@ void display()
   x+lx, y, z+lz,
   0.0f, 1.0f, 0.0f);
 
-  //~ glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-  //drawChair(3.0f, -12.0f);
-  //drawChair(3.0f, -14.0f);
   drawChair(3.0f, -16.0f);
   drawChair(3.0f, -18.0f);
   drawChair(3.0f, -20.0f);
@@ -703,13 +728,21 @@ void keyboard(unsigned char key, int x, int y) {
     switch(key){
         case 'o':
         right_door_angle+=1.0f;
-        left_door_angle-=1.0f;
+        glutPostRedisplay();
+        break;
+        
+        case 'p':
+        left_door_angle+=1.0f;
         glutPostRedisplay();
         break;
 
         case 'c':
         right_door_angle-=1.0f;
-        left_door_angle+=1.0f;
+        glutPostRedisplay();
+        break;
+
+        case 'v':
+        left_door_angle-=1.0f;
         glutPostRedisplay();
         break;
     }
@@ -752,7 +785,7 @@ float fraction_2 = 0.1f;
 
 	
 void init() {
-  glClearColor(0.0, 0.0, 0.0, 0.0);
+  glClearColor(0.7, 1.0, 1.0, 0.0);
 
   glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
   glLightfv(GL_LIGHT0, GL_POSITION, light_position);
@@ -810,7 +843,7 @@ int main(int argc,char **argv)
   glutInitWindowSize(WIDTH,HEIGHT);
   glutInitWindowPosition(10, 10);
 
-  if(!glutCreateWindow("IGREJA BATISTA - FAROL")) {
+  if(!glutCreateWindow("IGREJA FERNAO VELHO")) {
     fprintf(stderr,"Error opening a window.\n");
     exit(-1);
   }
@@ -823,7 +856,6 @@ int main(int argc,char **argv)
   glutIdleFunc(display);
   glutSpecialFunc(processSpecialKeys);
 
-  //glutIdleFunc(animate);
   glutMainLoop();
 
   return 0;
