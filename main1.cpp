@@ -88,42 +88,42 @@ void drawCube(GLdouble size, int *tex) {
   }
 }
 
-void drawOfficeDesk(float x, float z) {
+void drawOfficeDesk(float x, float y, float z) {
     glColor3f(0.1f, 0.1f, 0.1f);
 	
 	int office_desk_texture[] = {9, 9, 9, 9, 9, 9};
     
     //base esquerda
     glPushMatrix();
-    glTranslatef(x, 0.125f, z);
+    glTranslatef(x, 0.125f+y, z);
     glScalef(0.2, 0.1, 0.7);
     drawCube(1.0f, office_desk_texture);
     glPopMatrix();
 
 	//lateral esquerda
 	glPushMatrix();
-    glTranslatef(x, 0.4f, z);
+    glTranslatef(x, 0.4f+y, z);
     glScalef(0.1, 0.5f, 0.4);
     drawCube(1.0f, office_desk_texture);
     glPopMatrix();
      
     //base direita
     glPushMatrix();
-    glTranslatef(x+1, 0.125f, z);
+    glTranslatef(x+1, 0.125f+y, z);
     glScalef(0.2, 0.1, 0.7);
     drawCube(1.0f, office_desk_texture);
     glPopMatrix();    
     
     //lateral direita
 	glPushMatrix();
-    glTranslatef(x+1, 0.4f, z);
+    glTranslatef(x+1, 0.4f+y, z);
     glScalef(0.1, 0.5f, 0.4);
     drawCube(1.0f, office_desk_texture);
     glPopMatrix();
     
     //parte superior da mesa 
     glPushMatrix();
-    glTranslatef(x+0.5, 0.7f, z);
+    glTranslatef(x+0.5, 0.7f+y, z);
     glScalef(1.5, 0.1, 1.0);
     drawCube(1.0f, office_desk_texture);
     glPopMatrix();
@@ -132,20 +132,70 @@ void drawOfficeDesk(float x, float z) {
 void drawProjector() {
 	int projector_texture[] = {-1, -1, -1, 4, -1, -1};
 	
+//Projector 1
 	glColor3f(1.0f, 1.0f, 1.0f);
 	//suporte projetor
     glPushMatrix();
-    glTranslatef(3.0f, 5.375f, -29.0);
-    glScalef(0.05, 0.5, 0.05);
+    glTranslatef(4.0f, 5.075f, -29.0);
+    glScalef(0.05, 1.1, 0.05);
     glutSolidCube(1.0f);
     glPopMatrix();
     
 	//projetor
     glPushMatrix();
-    glTranslatef(3.0f, 5.0625f, -29.0f);
+    glTranslatef(4.0f, 4.4625f, -29.0f);
     glScalef(0.5, 0.125, 0.5);
     drawCube(1.0f, projector_texture);
     glPopMatrix();
+    
+//Projector 2
+    glColor3f(1.0f, 1.0f, 1.0f);
+    //suporte projetor
+    glPushMatrix();
+    glTranslatef(-4.0f, 5.075f, -29.0);
+    glScalef(0.05, 1.1, 0.05);
+    glutSolidCube(1.0f);
+    glPopMatrix();
+    
+    //projetor
+    glPushMatrix();
+    glTranslatef(-4.0f, 4.4625f, -29.0f);
+    glScalef(0.5, 0.125, 0.5);
+    drawCube(1.0f, projector_texture);
+    glPopMatrix();
+}
+
+void drawPainting() {
+    //bordas quadro
+    glPushMatrix();
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glTranslatef(-0.4f, 3.5f, -31.0f);
+    glScalef(2.5, 3.0, 0.1);
+    glutSolidCube(1.0f);
+    glPopMatrix();
+}
+
+
+void drawPulpit() {
+
+    int pulpit_texture[] = {-1, -1, -1, 4, -1, -1};
+    
+    //Base
+    glColor3f(0.745,0.423,0.188);
+    glPushMatrix();
+    glTranslatef(-0.4f, 1.95f, -29.0);
+    glScalef(1.0, 1.5, 0.8);
+    drawCube(1.0f, pulpit_texture);
+    glPopMatrix();
+    
+    //Tampa
+    glColor3f(0.745,0.423,0.188);
+    glPushMatrix();
+    glTranslatef(-0.4f, 2.8f, -29.0);
+    glScalef(1.5, 0.2, 0.8);
+    drawCube(1.0f, pulpit_texture);
+    glPopMatrix();
+
 }
 
 void drawAirConditioning(float x, float z, char side) {
@@ -169,19 +219,39 @@ void drawAirConditioning(float x, float z, char side) {
 void drawProjectionQuad() {
 	int projection_texture[] = {5, -1, -1, -1, -1, -1, -1};
 	
+//Projector 1
+
     //bordas quadro
     glPushMatrix();
     glColor3f(0.0f, 0.0f, 0.0f);
-    glTranslatef(0.0f, 2.75f, -31.0f);
-    glScalef(8.0, 4.0, 0.1);
+    glTranslatef(4.1f, 4.1f, -31.0f);
+    glScalef(2.5, 2.0, 0.1);
     glutSolidCube(1.0f);
     glPopMatrix();
 
 	//area de projeção
 	glColor3f(1.0f, 1.0f, 1.0f);
     glPushMatrix();
-    glTranslatef(0.0f, 3.0f, -30.5f);
-    glScalef(7.0, 3.0, 0.1);
+    glTranslatef(4.1f, 4.0f, -30.5f);
+    glScalef(2.0, 1.5, 0.1);
+    drawCube(1.0f, projection_texture);
+    glPopMatrix();
+
+//Projector 2
+
+    //bordas quadro
+    glPushMatrix();
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glTranslatef(-4.1f, 4.1f, -31.0f);
+    glScalef(2.5, 2.0, 0.1);
+    glutSolidCube(1.0f);
+    glPopMatrix();
+
+    //area de projeção
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPushMatrix();
+    glTranslatef(-4.1f, 4.0f, -30.5f);
+    glScalef(2.0, 1.5, 0.1);
     drawCube(1.0f, projection_texture);
     glPopMatrix();
 }
@@ -250,6 +320,53 @@ void drawChair(float x, float z) {
 }
 
 void drawTemple() {
+
+//Pirâmide esquerda
+float a = 0.4f;
+float y = 8.05f;
+float z = -2.1f;
+float x = -3.38f;
+glBegin(GL_TRIANGLE_FAN);
+    glColor3f(0.745,0.423,0.188); glVertex3f( 0.0f+x, a+y+0.4, 0.0f+z);   //V0(red)
+    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
+    glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y, a+z);   //V2(blue)
+    glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y,-a+z);   //V3(green)
+    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y,-a+z);   //V4(blue)
+    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
+glEnd();
+
+//Pirâmide direita
+a = 0.4f;
+y = 8.05f;
+z = -2.1f;
+x = 2.35f;
+glBegin(GL_TRIANGLE_FAN);
+    glColor3f(0.745,0.423,0.188); glVertex3f( 0.0f+x, a+y+0.4, 0.0f+z);   //V0(red)
+    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
+    glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y, a+z);   //V2(blue)
+    glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y,-a+z);   //V3(green)
+    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y,-a+z);   //V4(blue)
+    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
+glEnd();
+
+//Desenha Cruz
+    
+//Desenha linha horizontal
+    glPushMatrix();
+    glTranslatef(-0.5f, 10.2f, -2.0f); 
+    glScalef(2.0, 0.5, 0.3);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();
+    
+//Desenha linha vertical
+    glPushMatrix();
+    glTranslatef(-0.5f, 10.0f, -2.0f); 
+    glScalef(0.3, 3.0, 0.3);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();
+
 //Desenha parede frontal da direita da entrada
     glPushMatrix();
     glTranslatef(5.0f, 3.0f, -9.25f); 
@@ -351,7 +468,7 @@ void drawTemple() {
 //Desenha parede da porta de entrada da igreja 1/4
     glPushMatrix();
     glTranslatef(-0.5f, 4.78f, -2.25f); 
-    glScalef(13.0, 11.0, 1.0);  
+    glScalef(12.9, 11.0, 1.0);  
     glColor3f(0.917,0.8431,0.7372);
     glutSolidCube(0.5);
     glPopMatrix();
@@ -388,21 +505,6 @@ void drawTemple() {
     glVertex3f(2.3f,7.5f,-1.7f);
     glVertex3f(-0.5f,9.1f,-1.7f);
     glEnd();
-
-// Cruz
-//    glPushMatrix();
-//          glColor3f(0.4,0.2,0);
-//          glTranslatef(1.0, 8.7, 0);
-//          glScalef(0.5,0.198,2.48);
-//          glutSolidCube(0.2);
-//    glPopMatrix();
-
-//    glPushMatrix();
-//          glColor3f(0.4,0.2,0);
-//          glTranslatef(1.0, 8.5, 0);
-//          glScalef(0.4,3.3,0.5);
-//          glutSolidCube(0.2);
-//    glPopMatrix();
     
 //Desenha 1° linha horizontal da entrada da igreja
     glPushMatrix();
@@ -545,23 +647,23 @@ void drawTemple() {
     
 //escadas frontais
     glPushMatrix();
-    glColor3f(0.66f,0.66f,0.66f);
-    glTranslatef(0.0f, 0.5f, -29.25f);
-    glScalef(15.0, 1.0, 0.5);
+    glColor3f(0.917,0.8431,0.7372);
+    glTranslatef(0.0f, 1.0f, -30.0f);
+    glScalef(14.9, 0.4, 3.5);
     drawCube(1.0, pulpito_texture);
     glPopMatrix();
     
     glPushMatrix();
-    glColor3f(0.66f,0.66f,0.66f);
-    glTranslatef(0.0f, 0.5f, -26.25f);
-    glScalef(15.0, 1.0, 0.5);
+    glColor3f(0.917,0.8431,0.7372);
+    glTranslatef(0.0f, 0.60f, -29.5f);
+    glScalef(14.9, 0.4, 4.5);
     drawCube(1.0, pulpito_texture);
     glPopMatrix();
     
     glPushMatrix();
-    glColor3f(0.66f,0.66f,0.66f);
-    glTranslatef(0.0f, 0.25f, -25.75f);
-    glScalef(15.0, 0.5, 0.5);
+    glColor3f(0.917,0.8431,0.7372);
+    glTranslatef(0.0f, 0.20f, -29.0f);
+    glScalef(14.9, 0.4, 5.5);
     drawCube(1.0, pulpito_texture);
     glPopMatrix();
 }
@@ -573,6 +675,54 @@ void drawDoor() {
     glTranslatef(-5.6f, 1.9f, -9.0f);
     glScalef(1.8, 3.8, 0.3f);
     glutSolidCube(1.0);
+    glPopMatrix();            
+    
+    //Desenha janelinha 1
+    glPushMatrix();
+    glTranslatef(-6.0f, 3.2f, -8.9f);
+    glScalef(0.9, 1.0, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+    
+    //Desenha janelinha 2
+    glPushMatrix();
+    glTranslatef(-5.2f, 3.2f, -8.9f);
+    glScalef(0.9, 1.0, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix(); 
+    
+//Desenha borda esquerda da porta (ESQUERDA)
+    glPushMatrix();
+    glTranslatef(-6.5f, 1.9f, -8.8f);
+    glScalef(0.3, 7.55, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();  
+    
+//Desenha borda direita da porta (ESQUERDA)
+    glPushMatrix();
+    glTranslatef(-4.7f, 1.9f, -8.8f);
+    glScalef(0.3, 7.55, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix(); 
+    
+//Desenha primeira borda superior da porta (ESQUERDA)
+    glPushMatrix();
+    glTranslatef(-5.6f, 3.72f, -8.8f);
+    glScalef(3.55, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();
+    
+//Desenha segunda borda superior da porta (ESQUERDA)
+    glPushMatrix();
+    glTranslatef(-5.6f, 2.72f, -8.8f);
+    glScalef(3.55, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
     glPopMatrix();
 
     //Porta do lado direito
@@ -581,24 +731,98 @@ void drawDoor() {
     glTranslatef(5.1f, 1.9f, -9.0f);
     glScalef(2.2, 3.8, 0.3f);
     glutSolidCube(1.0);
+    glPopMatrix();           
+    
+    //Desenha janelinha 1
+    glPushMatrix();
+    glTranslatef(4.5f, 3.2f, -8.8f);
+    glScalef(0.7, 1.0, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix();             
+    
+    //Desenha janelinha 2
+    glPushMatrix();
+    glTranslatef(5.1f, 3.2f, -8.8f);
+    glScalef(0.7, 1.0, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+    
+    //Desenha janelinha 3
+    glPushMatrix();
+    glTranslatef(5.7f, 3.2f, -8.8f);
+    glScalef(0.7, 1.0, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix();   
+    
+//Desenha borda esquerda da porta (DIREITA)
+    glPushMatrix();
+    glTranslatef(3.95f, 1.9f, -8.8f);
+    glScalef(0.3, 7.55, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
     glPopMatrix();  
+    
+//Desenha borda direita da porta (DIREITA)
+    glPushMatrix();
+    glTranslatef(6.2f, 1.9f, -8.8f);
+    glScalef(0.3, 7.55, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix(); 
+    
+//Desenha primeira borda superior da porta (DIREITA)
+    glPushMatrix();
+    glTranslatef(5.0f, 3.72f, -8.8f);
+    glScalef(4.5, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();
+    
+//Desenha segunda borda superior da porta (DIREITA)
+    glPushMatrix();
+    glTranslatef(5.0f, 2.72f, -8.8f);
+    glScalef(4.5, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();
     
     //porta direita principal
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
-    glTranslatef(0.7f, 1.0f, -2.0f);
+    glTranslatef(1.7f, 0.945f, -1.8f);
     glRotatef(right_door_angle, 0, 1, 0);
-    glScalef(1.5, 2.0, 0.3f);
+    glTranslatef(-1.0f, -0.01f, -0.2f);
+    glScalef(1.5, 1.86, 0.3f);
     glutSolidCube(1.0);
-    glPopMatrix();       
+    glPopMatrix();  
+    
+//Desenha borda superior da porta (DIREITA)
+    glPushMatrix();
+    glTranslatef(0.7f, 1.95f, -1.9f);
+    glScalef(3.3, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();     
 
     //porta esquerda principal
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
-    glTranslatef(-1.7f, 1.0f, -2.0f);
+    glTranslatef(-0.95f, 0.93f, -2.1f);
     glRotatef(left_door_angle, 0, 1, 0);
-    glScalef(1.5, 2.0, 0.3f);
+    glTranslatef(-0.85f, 0.0f, -0.1f);
+    glScalef(1.45, 1.9, 0.3f);
     glutSolidCube(1.0);
+    glPopMatrix();     
+    
+//Desenha borda superior da porta (ESQUERDA)
+    glPushMatrix();
+    glTranslatef(-1.7f, 1.95f, -1.9f);
+    glScalef(3.0, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
     glPopMatrix();     
     
 //Desenha borda da porta 1 (ESQUERDA)
@@ -639,23 +863,55 @@ void drawWindows() {
     //1° Janela principal
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
-    glTranslatef(-2.2f, 4.8f, -2.0f);
-    glScalef(1.2, 1.8, 0.3f);
+    glTranslatef(-2.2f, 5.1f, -2.0f);
+    glScalef(1.2, 2.5, 0.3f);
     glutSolidCube(1.0);
-    glPopMatrix();     
+    glPopMatrix();      
+    
+    //Desenha janelinha 1
+    glPushMatrix();
+    glTranslatef(-2.47f, 5.9f, -1.9f);
+    glScalef(0.7, 0.6, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+    
+    //Desenha janelinha 2
+    glPushMatrix();
+    glTranslatef(-1.95f, 5.9f, -1.9f);
+    glScalef(0.7, 0.6, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+
+    //Desenha primeira borda superior da janela
+    glPushMatrix();
+    glTranslatef(-2.2f, 6.27f, -1.9f);
+    glScalef(2.7, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+    
+    //Desenha segunda borda superior da janela
+    glPushMatrix();
+    glTranslatef(-2.2f, 5.57f, -1.9f);
+    glScalef(2.7, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();    
     
 	//Desenha borda da janela 1 (ESQUERDA)
     glPushMatrix();
-    glTranslatef(-2.85f, 4.8f, -1.9f);
-    glScalef(0.3, 3.6, 0.6);  
+    glTranslatef(-2.85f, 5.1f, -1.9f);
+    glScalef(0.3, 5.0, 0.6);  
     glColor3f(0.745,0.423,0.188);
     glutSolidCube(0.5);
     glPopMatrix();
     
 	//Desenha borda da janela 1 (DIREITA)
     glPushMatrix();
-    glTranslatef(-1.6f, 4.8f, -1.9f);
-    glScalef(0.3, 3.6, 0.6);  
+    glTranslatef(-1.6f, 5.1f, -1.9f);
+    glScalef(0.3, 5.0, 0.6);  
     glColor3f(0.745,0.423,0.188);
     glutSolidCube(0.5);
     glPopMatrix();
@@ -663,23 +919,55 @@ void drawWindows() {
     //2° Janela principal
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
-    glTranslatef(1.2f, 4.8f, -2.0f);
-    glScalef(1.2, 1.8, 0.3f);
+    glTranslatef(1.2f, 5.1, -2.0f);
+    glScalef(1.2, 2.5, 0.3f);
     glutSolidCube(1.0);
+    glPopMatrix();           
+    
+    //Desenha janelinha 1
+    glPushMatrix();
+    glTranslatef(-0.70f, 5.9f, -1.9f);
+    glScalef(0.7, 0.6, 0.4);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.8f);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+    
+    //Desenha janelinha 2
+    glPushMatrix();
+    glTranslatef(-0.15f, 5.9f, -1.9f);
+    glScalef(0.7, 0.6, 0.4);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.8f);
+    glutSolidCube(0.5);
     glPopMatrix(); 
+    
+    //Desenha primeira borda superior da janela
+    glPushMatrix();
+    glTranslatef(1.2f, 6.27f, -1.9f);
+    glScalef(2.46, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+    
+    //Desenha segunda borda superior da janela
+    glPushMatrix();
+    glTranslatef(1.2f, 5.57f, -1.9f);
+    glScalef(2.46, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();  
     
 	//Desenha borda da janela 2 (ESQUERDA)
     glPushMatrix();
-    glTranslatef(-1.15f, 4.8f, -1.9f);
-    glScalef(0.3, 3.6, 0.6);  
+    glTranslatef(-1.15f, 5.1f, -1.9f);
+    glScalef(0.3, 5.0, 0.6);  
     glColor3f(0.745,0.423,0.188);
     glutSolidCube(0.5);
     glPopMatrix();  
     
 	//Desenha borda da janela 2 (DIREITA)
     glPushMatrix();
-    glTranslatef(0.15f, 4.8f, -1.9f);
-    glScalef(0.3, 3.6, 0.6);  
+    glTranslatef(0.15f, 5.1f, -1.9f);
+    glScalef(0.3, 5.0, 0.6);  
     glColor3f(0.745,0.423,0.188);
     glutSolidCube(0.5);
     glPopMatrix();     
@@ -687,23 +975,55 @@ void drawWindows() {
     //3° Janela principal
     glPushMatrix();
     glColor3f(0.11f,0.09f,0.043f);
-    glTranslatef(-0.5f, 4.8f, -2.0f);
-    glScalef(1.2, 1.8, 0.3f);
+    glTranslatef(-0.5f, 5.1f, -2.0f);
+    glScalef(1.2, 2.5, 0.3f);
     glutSolidCube(1.0);
+    glPopMatrix();            
+    
+    //Desenha janelinha 1
+    glPushMatrix();
+    glTranslatef(1.57f, 5.9f, -1.8f);
+    glScalef(0.7, 0.6, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+    
+    //Desenha janelinha 2
+    glPushMatrix();
+    glTranslatef(1.05f, 5.9f, -1.8f);
+    glScalef(0.7, 0.6, 0.3);  
+    glColor4f(0.6f, 0.8f, 0.4f,0.5f);
+    glutSolidCube(0.5);
+    glPopMatrix();     
+    
+    //Desenha primeira borda superior da janela
+    glPushMatrix();
+    glTranslatef(-0.5f, 6.27f, -1.9f);
+    glScalef(2.7, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
+    glPopMatrix();       
+    
+    //Desenha segunda borda superior da janela
+    glPushMatrix();
+    glTranslatef(-0.5f, 5.57f, -1.9f);
+    glScalef(2.7, 0.3, 0.6);  
+    glColor3f(0.745,0.423,0.188);
+    glutSolidCube(0.5);
     glPopMatrix();   
     
 	//Desenha borda da janela 3 (ESQUERDA)
     glPushMatrix();
-    glTranslatef(0.65f, 4.8f, -1.9f);
-    glScalef(0.3, 3.6, 0.6);  
+    glTranslatef(0.65f, 5.1f, -1.9f);
+    glScalef(0.3, 5.0, 0.6);  
     glColor3f(0.745,0.423,0.188);
     glutSolidCube(0.5);
     glPopMatrix();  
     
 	//Desenha borda da janela 3 (DIREITA)
     glPushMatrix();
-    glTranslatef(1.9f, 4.8f, -1.9f);
-    glScalef(0.3, 3.6, 0.6);  
+    glTranslatef(1.9f, 5.1f, -1.9f);
+    glScalef(0.3, 5.0, 0.6);  
     glColor3f(0.745,0.423,0.188);
     glutSolidCube(0.5);
     glPopMatrix();        
@@ -819,14 +1139,16 @@ void display()
   drawWindows();
   drawProjectionQuad();
   drawProjector();
-  drawOfficeDesk(-6.0f, -10.5f);
+  drawOfficeDesk(-5.5f, -0.1f, -10.0f);
+  drawOfficeDesk(4.0f, -0.1f, -10.0f);
   drawAirConditioning(6.85, -22.0, 'r');
   drawAirConditioning(6.85, -18.0, 'r');
-  drawAirConditioning(6.85, -14.0, 'r');
-  
+  drawAirConditioning(6.85, -14.0, 'r');  
   drawAirConditioning(-6.85, -28.0, 'l');
   drawAirConditioning(-6.85, -25.0, 'l');
   drawAirConditioning(-6.85, -22.0, 'l');
+  drawPulpit();
+  drawPainting();
   
   glFlush();
   glutSwapBuffers();
@@ -836,22 +1158,22 @@ void display()
 void keyboard(unsigned char key, int x, int y) {
     switch(key){
         case 'p':
-        right_door_angle+=1.0f;
+        if(right_door_angle < 90.0f) right_door_angle=90.0f;
         glutPostRedisplay();
         break;
         
         case 'o':
-        left_door_angle+=1.0f;
+        if(left_door_angle < 90.0f) left_door_angle=90.0f;
         glutPostRedisplay();
         break;
 
         case 'v':
-        right_door_angle-=1.0f;
+        if(right_door_angle >= 90.0f) right_door_angle=0.0f;
         glutPostRedisplay();
         break;
 
         case 'c':
-        left_door_angle-=1.0f;
+        if(left_door_angle >= 90.0f) left_door_angle=0.0f;
         glutPostRedisplay();
         break;
     }
