@@ -86,7 +86,7 @@ void drawCube(GLdouble size, int *tex) {
 void drawOfficeDesk(float x, float y, float z) {
     glColor3f(0.1f, 0.1f, 0.1f);
 	
-	int office_desk_texture[] = {9, 9, 9, 9, 9, 9};
+	int office_desk_texture[] = {8, 8, 8, 8, 8, 8};
     
     //base esquerda
     glPushMatrix();
@@ -127,7 +127,8 @@ void drawOfficeDesk(float x, float y, float z) {
 void drawProjector() {
 	int projector_texture[] = {-1, -1, -1, 4, -1, -1};
 	
-//Projector 1
+    //Projector 1
+
 	glColor3f(1.0f, 1.0f, 1.0f);
 	//suporte projetor
     glPushMatrix();
@@ -143,7 +144,8 @@ void drawProjector() {
     drawCube(1.0f, projector_texture);
     glPopMatrix();
     
-//Projector 2
+    //Projector 2
+
     glColor3f(1.0f, 1.0f, 1.0f);
     //suporte projetor
     glPushMatrix();
@@ -162,13 +164,13 @@ void drawProjector() {
 
 void drawPainting() {
     //bordas quadro
-    int pulpit_texture[] = {-1, -1, -1, -1, 15, -1};
+    int pulpit_texture[] = {-1, -1, -1, -1, 6, -1};
     glPushMatrix();
     //glColor3f(0.0f, 0.0f, 0.0f);
     glTranslatef(-0.4f, 3.5f, -31.0f);
     glScalef(2.5, 3.0, 0.1);
     drawCube(1.0f, pulpit_texture);
-   // glutSolidCube(1.0f);
+    // glutSolidCube(1.0f);
     glPopMatrix();
 }
 
@@ -214,9 +216,8 @@ void drawAirConditioning(float x, float z, char side) {
 }
 
 void drawProjectionQuad() {
-	int projection_texture[] = {5, -1, -1, -1, -1, -1, -1};
 	
-//Projector 1
+    //Projetor 1
 
     //bordas quadro
     glPushMatrix();
@@ -231,10 +232,10 @@ void drawProjectionQuad() {
     glPushMatrix();
     glTranslatef(4.1f, 4.0f, -30.5f);
     glScalef(2.0, 1.5, 0.1);
-    drawCube(1.0f, projection_texture);
+    glutSolidCube(1.0f);
     glPopMatrix();
 
-//Projector 2
+    //Projector 2
 
     //bordas quadro
     glPushMatrix();
@@ -249,7 +250,7 @@ void drawProjectionQuad() {
     glPushMatrix();
     glTranslatef(-4.1f, 4.0f, -30.5f);
     glScalef(2.0, 1.5, 0.1);
-    drawCube(1.0f, projection_texture);
+    glutSolidCube(1.0f);
     glPopMatrix();
 }
 
@@ -318,40 +319,40 @@ void drawChair(float x, float z) {
 
 void drawTemple() {
 
-int chair_texture[] = {2, 2, 2, 2, 2, 2};
-int wall_texture[] = {16, 16, 16, 16, 16, 16};
+    int chair_texture[] = {2, 2, 2, 2, 2, 2};
+    int wall_texture[] = {5, 5, 5, 5, 5, 5};
 
-//Pirâmide esquerda
-float a = 0.4f;
-float y = 8.05f;
-float z = -2.1f;
-float x = -3.38f;
-glBegin(GL_TRIANGLE_FAN);
-    glColor3f(0.745,0.423,0.188); glVertex3f( 0.0f+x, a+y+0.4, 0.0f+z);   //V0(red)
-    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
-    glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y, a+z);   //V2(blue)
-    glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y,-a+z);   //V3(green)
-    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y,-a+z);   //V4(blue)
-    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
-glEnd();
+    //Pirâmide esquerda
+    float a = 0.4f;
+    float y = 8.05f;
+    float z = -2.1f;
+    float x = -3.38f;
+    glBegin(GL_TRIANGLE_FAN);
+        glColor3f(0.745,0.423,0.188); glVertex3f( 0.0f+x, a+y+0.4, 0.0f+z);   //V0(red)
+        glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
+        glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y, a+z);   //V2(blue)
+        glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y,-a+z);   //V3(green)
+        glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y,-a+z);   //V4(blue)
+        glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
+    glEnd();
 
-//Pirâmide direita
-a = 0.4f;
-y = 8.05f;
-z = -2.1f;
-x = 2.35f;
-glBegin(GL_TRIANGLE_FAN);
-    glColor3f(0.745,0.423,0.188); glVertex3f( 0.0f+x, a+y+0.4, 0.0f+z);   //V0(red)
-    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
-    glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y, a+z);   //V2(blue)
-    glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y,-a+z);   //V3(green)
-    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y,-a+z);   //V4(blue)
-    glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
-glEnd();
+    //Pirâmide direita
+    a = 0.4f;
+    y = 8.05f;
+    z = -2.1f;
+    x = 2.35f;
+    glBegin(GL_TRIANGLE_FAN);
+        glColor3f(0.745,0.423,0.188); glVertex3f( 0.0f+x, a+y+0.4, 0.0f+z);   //V0(red)
+        glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
+        glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y, a+z);   //V2(blue)
+        glColor3f(0.745,0.423,0.188); glVertex3f( a+x,-a+y,-a+z);   //V3(green)
+        glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y,-a+z);   //V4(blue)
+        glColor3f(0.745,0.423,0.188); glVertex3f(-a+x,-a+y, a+z);   //V1(green)
+    glEnd();
 
-//Desenha Cruz
+    //Desenha Cruz
     
-//Desenha linha horizontal
+    //Desenha linha horizontal
     glPushMatrix();
     glTranslatef(-0.5f, 10.2f, -2.0f); 
     glScalef(1.5, 0.3, 0.3);  
@@ -359,7 +360,7 @@ glEnd();
     drawCube(0.5f, chair_texture);
     glPopMatrix();
     
-//Desenha linha vertical
+    //Desenha linha vertical
     glPushMatrix();
     glTranslatef(-0.5f, 10.0f, -2.0f); 
     glScalef(0.3, 3.0, 0.3);  
@@ -367,7 +368,7 @@ glEnd();
     drawCube(0.5f, chair_texture);
     glPopMatrix();
 
-//Desenha parede frontal da direita da entrada
+    //Desenha parede frontal da direita da entrada
     glPushMatrix();
     glTranslatef(5.0f, 3.0f, -9.25f); 
     glScalef(10.0, 12.0, 1.0);  
@@ -375,7 +376,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha 1° linha horizontal da parede frontal da direita da entrada
+    //Desenha 1° linha horizontal da parede frontal da direita da entrada
     glPushMatrix();
     glTranslatef(5.0f, 5.9f, -8.9f); 
     glScalef(10.0, 0.5, 0.6);  
@@ -383,7 +384,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha 2° linha horizontal da parede frontal da direita da entrada
+    //Desenha 2° linha horizontal da parede frontal da direita da entrada
     glPushMatrix();
     glTranslatef(5.0f, 4.9f, -8.9f); 
     glScalef(10.0, 0.5, 0.6);  
@@ -391,7 +392,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha 1° linha vertical da parede frontal da direita da entrada
+    //Desenha 1° linha vertical da parede frontal da direita da entrada
     glPushMatrix();
     glTranslatef(2.9f, 3.0f, -8.9f); 
     glScalef(0.8, 12.0, 0.8);  
@@ -399,7 +400,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha 2° linha vertical da parede frontal da direita da entrada
+    //Desenha 2° linha vertical da parede frontal da direita da entrada
     glPushMatrix();
     glTranslatef(7.3f, 3.0f, -8.9f);
     glScalef(0.8, 12.0, 0.8);  
@@ -408,7 +409,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha parede lateral direita da entrada    
+    //Desenha parede lateral direita da entrada    
     glPushMatrix();
     glTranslatef(2.5f, 3.75f, -5.5f);
     glScalef(0.5, 7.5, 7.0);  
@@ -416,7 +417,7 @@ glEnd();
     drawCube(1.0f, wall_texture);
     glPopMatrix();
 
-//Desenha parede frontal da esquerda da entrada
+    //Desenha parede frontal da esquerda da entrada
     glPushMatrix();
     glTranslatef(-5.5f, 3.0f, -9.25f); 
     glScalef(8.0, 12.0, 1.0);  
@@ -424,7 +425,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha 1° linha horizontal da parede frontal da esquerda da entrada
+    //Desenha 1° linha horizontal da parede frontal da esquerda da entrada
     glPushMatrix();
     glTranslatef(-5.5f, 5.9f, -8.9f); 
     glScalef(8.0, 0.5, 0.6);  
@@ -432,7 +433,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha 2° linha horizontal da parede frontal da esquerda da entrada
+    //Desenha 2° linha horizontal da parede frontal da esquerda da entrada
     glPushMatrix();
     glTranslatef(-5.5f, 4.9f, -8.9f); 
     glScalef(8.0, 0.5, 0.6);  
@@ -440,7 +441,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha 1° linha vertical da parede frontal da esquerda da entrada
+    //Desenha 1° linha vertical da parede frontal da esquerda da entrada
     glPushMatrix();
     glTranslatef(-7.3f, 3.0f, -8.9f);
     glScalef(0.8, 12.0, 0.8);  
@@ -448,7 +449,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha 2° linha vertical da parede frontal da esquerda da entrada
+    //Desenha 2° linha vertical da parede frontal da esquerda da entrada
     glPushMatrix();
     glTranslatef(-3.9f, 3.0f, -8.9f); 
     glScalef(0.8, 12.0, 0.8);  
@@ -457,7 +458,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha parede lateral esquerda da entrada  
+    //Desenha parede lateral esquerda da entrada  
     glPushMatrix();
     glTranslatef(-3.5f, 3.75f, -5.5f);
     glScalef(0.5, 7.5, 7.0);  
@@ -465,7 +466,7 @@ glEnd();
     drawCube(1.0f, wall_texture);
     glPopMatrix();
     
-//Desenha parede da porta de entrada da igreja 1/4
+    //Desenha parede da porta de entrada da igreja 1/4
     glPushMatrix();
     glTranslatef(-0.5f, 4.78f, -2.25f); 
     glScalef(12.9, 11.0, 1.0);  
@@ -473,7 +474,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha parede da porta de entrada da igreja 2/4
+    //Desenha parede da porta de entrada da igreja 2/4
     glPushMatrix();
     glTranslatef(-3.0f, 0.9f, -2.25f); 
     glScalef(2.2, 4.55, 1.0);  
@@ -482,7 +483,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha parede da porta de entrada da igreja 3/4
+    //Desenha parede da porta de entrada da igreja 3/4
     glPushMatrix();
     glTranslatef(-0.5f,0.9f, -2.25f); 
     glScalef(1.8, 4.55, 1.0);  
@@ -490,7 +491,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha parede da porta de entrada da igreja 4/4
+    //Desenha parede da porta de entrada da igreja 4/4
     glPushMatrix();
     glTranslatef(1.9f,0.9f, -2.25f); 
     glScalef(1.8,4.55, 1.0);  
@@ -498,7 +499,7 @@ glEnd();
     drawCube(0.5f, wall_texture);
     glPopMatrix();
     
-//Desenha ponta da igreja
+    //Desenha ponta da igreja
     glBegin(GL_TRIANGLES);  
     glColor3f(0.917,0.8431,0.7372);
     glVertex3f(-3.3f,7.5f,-1.7f);
@@ -506,7 +507,7 @@ glEnd();
     glVertex3f(-0.5f,9.1f,-1.7f);
     glEnd();
     
-//Desenha 1° linha horizontal da entrada da igreja
+    //Desenha 1° linha horizontal da entrada da igreja
     glPushMatrix();
     glTranslatef(-0.5f, 7.1, -1.9); 
     glScalef(13.0, 0.3, 0.8);  
@@ -514,7 +515,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha 2° linha horizontal da entrada da igreja
+    //Desenha 2° linha horizontal da entrada da igreja
     glPushMatrix();
     glTranslatef(-0.5f, 3.85f, -1.9); 
     glScalef(11.2, 0.3, 0.8);  
@@ -522,7 +523,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha 1° linha rotacionada da igreja (DIREITA)
+    //Desenha 1° linha rotacionada da igreja (DIREITA)
     glPushMatrix();
     glTranslatef(0.91f, 2.8f, -1.9f);
     glRotatef(75.0f, 0, 0, 1); 
@@ -531,7 +532,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha 1° linha rotacionada da igreja (ESQUERDA)
+    //Desenha 1° linha rotacionada da igreja (ESQUERDA)
     glPushMatrix();
     glTranslatef(-1.9f, 2.8f, -1.9f);
     glRotatef(-75.0, 0, 0, 1);
@@ -540,7 +541,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha 2° linha rotacionada da igreja (DIREITA)
+    //Desenha 2° linha rotacionada da igreja (DIREITA)
     glPushMatrix();
     glTranslatef(0.91f, 3.3f, -1.9f);
     glRotatef(75.0f, 0, 0, 1); 
@@ -549,7 +550,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha 2° linha rotacionada da igreja (ESQUERDA)
+    //Desenha 2° linha rotacionada da igreja (ESQUERDA)
     glPushMatrix();
     glTranslatef(-1.9f, 3.3f, -1.9f);
     glRotatef(-75.0, 0, 0, 1);
@@ -558,7 +559,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha 1° linha vertical da entrada da igreja
+    //Desenha 1° linha vertical da entrada da igreja
     glPushMatrix();
     glTranslatef(-3.52f, 3.75f, -1.9); 
     glScalef(1.0, 15.5, 0.8);  
@@ -566,7 +567,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha 2° linha vertical da entrada da igreja
+    //Desenha 2° linha vertical da entrada da igreja
     glPushMatrix();
     glTranslatef(2.52f, 3.75f, -1.9);
     glScalef(1.0, 15.5, 0.8);  
@@ -575,7 +576,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
 	
-//Parede lateral esquerda
+    //Parede lateral esquerda
 	glPushMatrix();
     glColor3f(0.917,0.8431,0.7372);
     glTranslatef(7.25f, 2.75f, -20.5f);
@@ -583,7 +584,7 @@ glEnd();
     drawCube(1.0f, wall_texture);
     glPopMatrix();
     
-//Parede lateral direita
+    //Parede lateral direita
 	glPushMatrix();
     glColor3f(0.917,0.8431,0.7372);
     glTranslatef(-7.25f, 2.75f, -20.5f);
@@ -591,7 +592,7 @@ glEnd();
     drawCube(1.0f, wall_texture);
     glPopMatrix();
 
-//parede do fundo do templo 
+    //parede do fundo do templo 
     glPushMatrix();
     glColor3f(0.9,0.9,0.9);
     glTranslatef(0.0f, 2.75f, -31.75f);
@@ -599,7 +600,7 @@ glEnd();
     drawCube(1.0f, wall_texture);
     glPopMatrix();
 
-//teto do templo
+    //teto do templo
     glPushMatrix();
     glColor3f(0.66f,0.66f,0.66f);
     glTranslatef(0.0f, 5.75f, -20.75f);
@@ -607,7 +608,7 @@ glEnd();
     drawCube(1.0f, wall_texture);
     glPopMatrix();
 
-//teto interno entrada do templo (DIREITA)
+    //teto interno entrada do templo (DIREITA)
     glPushMatrix();
     glColor3f(0.745,0.423,0.188);
     glTranslatef(1.0f, 8.5f, -5.5f);
@@ -616,7 +617,7 @@ glEnd();
     glutSolidCube(1.0);
     glPopMatrix();
 
-//teto interno entrada do templo (ESQUERDA)
+    //teto interno entrada do templo (ESQUERDA)
     glPushMatrix();
     glColor3f(0.745,0.423,0.188);
     glTranslatef(-2.0f, 8.5f, -5.5f);
@@ -625,7 +626,7 @@ glEnd();
     glutSolidCube(1.0);
     glPopMatrix();
     
-//Desenha 1° linha do teto da igreja (DIREITA)
+    //Desenha 1° linha do teto da igreja (DIREITA)
     glPushMatrix();
     glTranslatef(1.0f, 8.45f, -1.9f);
     glRotatef(59.15f, 0, 0, 1); 
@@ -634,7 +635,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha 2° linha do teto da igreja (ESQUERDA)
+    //Desenha 2° linha do teto da igreja (ESQUERDA)
     glPushMatrix();
     glTranslatef(-2.0f, 8.45f, -1.9f);
     glRotatef(-60.0f, 0, 0, 1);
@@ -643,9 +644,9 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
 
-	int pulpito_texture[] = {9, 9, 9, 9, 9, 9};
+	int pulpito_texture[] = {8, 8, 8, 8, 8, 8};
     
-//escadas frontais
+    //escadas frontais
     glPushMatrix();
     glColor3f(0.917,0.8431,0.7372);
     glTranslatef(0.0f, 1.0f, -30.0f);
@@ -696,7 +697,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix(); 
     
-//Desenha borda esquerda da porta (ESQUERDA)
+    //Desenha borda esquerda da porta (ESQUERDA)
     glPushMatrix();
     glTranslatef(-6.5f, 1.9f, -8.8f);
     glScalef(0.3, 7.55, 0.6);  
@@ -704,7 +705,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();  
     
-//Desenha borda direita da porta (ESQUERDA)
+    //Desenha borda direita da porta (ESQUERDA)
     glPushMatrix();
     glTranslatef(-4.7f, 1.9f, -8.8f);
     glScalef(0.3, 7.55, 0.6);  
@@ -712,7 +713,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix(); 
     
-//Desenha primeira borda superior da porta (ESQUERDA)
+    //Desenha primeira borda superior da porta (ESQUERDA)
     glPushMatrix();
     glTranslatef(-5.6f, 3.72f, -8.8f);
     glScalef(3.55, 0.3, 0.6);  
@@ -720,7 +721,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha segunda borda superior da porta (ESQUERDA)
+    //Desenha segunda borda superior da porta (ESQUERDA)
     glPushMatrix();
     glTranslatef(-5.6f, 2.72f, -8.8f);
     glScalef(3.55, 0.3, 0.6);  
@@ -760,7 +761,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();   
     
-//Desenha borda esquerda da porta (DIREITA)
+    //Desenha borda esquerda da porta (DIREITA)
     glPushMatrix();
     glTranslatef(3.95f, 1.9f, -8.8f);
     glScalef(0.3, 7.55, 0.6);  
@@ -768,7 +769,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();  
     
-//Desenha borda direita da porta (DIREITA)
+    //Desenha borda direita da porta (DIREITA)
     glPushMatrix();
     glTranslatef(6.2f, 1.9f, -8.8f);
     glScalef(0.3, 7.55, 0.6);  
@@ -776,7 +777,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix(); 
     
-//Desenha primeira borda superior da porta (DIREITA)
+    //Desenha primeira borda superior da porta (DIREITA)
     glPushMatrix();
     glTranslatef(5.0f, 3.72f, -8.8f);
     glScalef(4.5, 0.3, 0.6);  
@@ -784,7 +785,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha segunda borda superior da porta (DIREITA)
+    //Desenha segunda borda superior da porta (DIREITA)
     glPushMatrix();
     glTranslatef(5.0f, 2.72f, -8.8f);
     glScalef(4.5, 0.3, 0.6);  
@@ -802,7 +803,7 @@ void drawDoor() {
     drawCube(1.0f, chair_texture);
     glPopMatrix();  
     
-//Desenha borda superior da porta (DIREITA)
+    //Desenha borda superior da porta (DIREITA)
     glPushMatrix();
     glTranslatef(0.7f, 1.95f, -1.9f);
     glScalef(3.3, 0.3, 0.6);  
@@ -820,7 +821,7 @@ void drawDoor() {
     drawCube(1.0f, chair_texture);
     glPopMatrix();     
     
-//Desenha borda superior da porta (ESQUERDA)
+    //Desenha borda superior da porta (ESQUERDA)
     glPushMatrix();
     glTranslatef(-1.7f, 1.95f, -1.9f);
     glScalef(3.0, 0.3, 0.6);  
@@ -828,7 +829,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();     
     
-//Desenha borda da porta 1 (ESQUERDA)
+    //Desenha borda da porta 1 (ESQUERDA)
     glPushMatrix();
     glTranslatef(-2.52f, 0.9f, -1.9f);
     glScalef(0.3, 4.5, 0.6);  
@@ -836,7 +837,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha borda da porta 1 (DIREITA)
+    //Desenha borda da porta 1 (DIREITA)
     glPushMatrix();
     glTranslatef(-1.0f, 0.9f, -1.9f);
     glScalef(0.3, 4.5, 0.6);  
@@ -844,7 +845,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha borda da porta 2 (ESQUERDA)
+    //Desenha borda da porta 2 (ESQUERDA)
     glPushMatrix();
     glTranslatef(1.52f, 0.9f, -1.9f);
     glScalef(0.3, 4.5, 0.6);  
@@ -852,7 +853,7 @@ void drawDoor() {
     glutSolidCube(0.5);
     glPopMatrix();
     
-//Desenha borda da porta 2 (DIREITA)
+    //Desenha borda da porta 2 (DIREITA)
     glPushMatrix();
     glTranslatef(-0.1f, 0.9f, -1.9f);
     glScalef(0.3, 4.5, 0.6);  
@@ -1037,7 +1038,7 @@ void drawFloor() {
 
   //piso-templo
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[8]);	 
+  glBindTexture(GL_TEXTURE_2D, texture_id[7]);	 
   glTranslatef(0.0f, 0.0f, -13.0f);
   glBegin(GL_QUADS);
   glColor3f(1.0f, 1.0f, 1.0f);
@@ -1055,7 +1056,7 @@ void drawFloor() {
   
   //gramado lado esquerdo
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[8]);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glTranslatef(-5.0f, 0.0f, 6.25f);
   glBegin(GL_QUADS);
   glColor3f(0.0f, 0.3f, 0.0f);
@@ -1073,7 +1074,7 @@ void drawFloor() {
   
   //gramado lado direito
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[8]);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glTranslatef(3.25f, 0.0f, 4.5f);
   glBegin(GL_QUADS);
   glColor3f(0.0f, 0.3f, 0.0f);
@@ -1091,7 +1092,7 @@ void drawFloor() {
   
   //piso entrada
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[8]);	 
+  glBindTexture(GL_TEXTURE_2D, texture_id[7]);	 
   glTranslatef(-1.75f, 0.0f, 4.5f);
   glBegin(GL_QUADS);
   glColor3f(0.0f, 0.3f, 0.0f);
@@ -1219,47 +1220,38 @@ float fraction_2 = 0.1f;
 }
 
 void loadTextureFromFile(char const *filename,int index) {
-  int width, height, c;
-  c = 3;
-  std::ifstream file(filename);
-  if(! file.good())
-    throw "file not found";
-  file.close();
+    int width, height, c;
+    c = 3;
+    std::ifstream file(filename);
 
-sf::Image image;
-image.loadFromFile(filename);
+    if(! file.good())
+    throw "file not found";
+    file.close();
+
+    sf::Image image;
+    image.loadFromFile(filename);
 
     printf("%d %d\n", width, height);
 
-  glGenTextures(1, &texture_id[index]);
-  glBindTexture(GL_TEXTURE_2D, texture_id[index]);
+    glGenTextures(1, &texture_id[index]);
+    glBindTexture(GL_TEXTURE_2D, texture_id[index]);
 
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
-  glBindTexture(GL_TEXTURE_2D, 0);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void initTextures(){
-	loadTextureFromFile("texture/piso-escada.jpg", 0);
+void applyTextures(){
 	loadTextureFromFile("texture/grass.jpg", 1);
 	loadTextureFromFile("texture/tabaco.jpg", 2);
 	loadTextureFromFile("texture/airc.jpg", 3);
 	loadTextureFromFile("texture/projetor.jpg", 4);
-	loadTextureFromFile("texture/slide_projetor.png", 5);
-	loadTextureFromFile("texture/fachada-lt.png", 6);
-	loadTextureFromFile("texture/piso-templo.jpg", 7);
-	loadTextureFromFile("texture/piso-entrada.jpg", 8);
-	loadTextureFromFile("texture/mesa.jpg", 9);
-	loadTextureFromFile("texture/fachada-teto.png", 10);
-	loadTextureFromFile("texture/inferior-cruz.png", 11);
-	loadTextureFromFile("texture/superior-cruz.png", 12);
-	loadTextureFromFile("texture/parede-pulpito.jpg", 13);
-	loadTextureFromFile("texture/parede-lateral.jpg", 14);
-    loadTextureFromFile("texture/jesus.jpg", 15);
-    loadTextureFromFile("texture/parede-interna.jpg", 16);
-	
+	loadTextureFromFile("texture/parede-interna.jpg", 5);
+	loadTextureFromFile("texture/jesus.jpg", 6);
+	loadTextureFromFile("texture/piso-entrada.jpg", 7);
+	loadTextureFromFile("texture/mesa.jpg", 8);
 }
 	
 void init() {
@@ -1284,34 +1276,25 @@ void init() {
   glLoadIdentity();
   glOrtho(0, WIDTH, 0, HEIGHT, -1, 1);
 
-  initTextures();
+  applyTextures();
 }
 
 void reshape(GLsizei width, GLsizei height)
 {
-  // Prevent a divide by zero, when window is too short
-  // (you cant make a window of zero width).
   if (height == 0) {
       height = 1;
   }
 
-  // Set the viewport to be the entire window
   glViewport(0, 0, width, height);
 
   float ratio = width * 1.0 / height;
 
-  // Use the Projection Matrix
   glMatrixMode(GL_PROJECTION);
-
-  // Reset Matrix
   glLoadIdentity();
 
-  // Set the correct perspective.
   gluPerspective(45.0f, ratio, 0.1f, 100.0f);
 
-  // Get Back to the Modelview
   glMatrixMode(GL_MODELVIEW);
-
 }
 
 int main(int argc,char **argv)
