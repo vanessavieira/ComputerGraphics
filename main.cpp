@@ -1,14 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <GL/glut.h>
-#include <iostream>
-#include "SOIL.h"
-
-GLint WIDTH =700;
-GLint HEIGHT=700;
+#include "main.h"
 
 #include <fstream>
+#include <SFML/Graphics.hpp>
 
 // actual vector representing the camera's direction
 float lx=0.0f,lz=-1.0f;
@@ -17,9 +10,11 @@ float x=-5.0f,z=6.0f, y=1.0f;
 
 
 GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};
-GLfloat light_position[] = {0.0, 0.0, 0.0, 1.0};
+GLfloat light_position[] = {0.0, 1.0, 1.0, 1.0};
 
 float angle = 0.0f;
+
+float glass_alpha = 0.5f;
 
 float right_door_angle = 0.0f;
 float left_door_angle = 0.0f;
@@ -167,18 +162,20 @@ void drawProjector() {
 
 void drawPainting() {
     //bordas quadro
+    int pulpit_texture[] = {-1, -1, -1, -1, 15, -1};
     glPushMatrix();
-    glColor3f(0.0f, 0.0f, 0.0f);
+    //glColor3f(0.0f, 0.0f, 0.0f);
     glTranslatef(-0.4f, 3.5f, -31.0f);
     glScalef(2.5, 3.0, 0.1);
-    glutSolidCube(1.0f);
+    drawCube(1.0f, pulpit_texture);
+   // glutSolidCube(1.0f);
     glPopMatrix();
 }
 
 
 void drawPulpit() {
 
-    int pulpit_texture[] = {-1, -1, -1, 4, -1, -1};
+    int pulpit_texture[] = {2, 2, 2, 2, 2, 2};
     
     //Base
     glColor3f(0.745,0.423,0.188);
@@ -321,6 +318,8 @@ void drawChair(float x, float z) {
 
 void drawTemple() {
 
+int chair_texture[] = {2, 2, 2, 2, 2, 2};
+
 //Pirâmide esquerda
 float a = 0.4f;
 float y = 8.05f;
@@ -354,17 +353,17 @@ glEnd();
 //Desenha linha horizontal
     glPushMatrix();
     glTranslatef(-0.5f, 10.2f, -2.0f); 
-    glScalef(2.0, 0.5, 0.3);  
-    glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    glScalef(1.5, 0.3, 0.3);  
+    //glColor3f(0.745,0.423,0.188);
+    drawCube(0.5f, chair_texture);
     glPopMatrix();
     
 //Desenha linha vertical
     glPushMatrix();
     glTranslatef(-0.5f, 10.0f, -2.0f); 
     glScalef(0.3, 3.0, 0.3);  
-    glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    //glColor3f(0.745,0.423,0.188);
+    drawCube(0.5f, chair_texture);
     glPopMatrix();
 
 //Desenha parede frontal da direita da entrada
@@ -643,7 +642,7 @@ glEnd();
     glutSolidCube(0.5);
     glPopMatrix();
 
-	int pulpito_texture[] = {0, 0, 0, -1, 0, 0};
+	int pulpito_texture[] = {9, 9, 9, 9, 9, 9};
     
 //escadas frontais
     glPushMatrix();
@@ -669,12 +668,15 @@ glEnd();
 }
 
 void drawDoor() {
+    
+    int chair_texture[] = {2, 2, 2, 2, 2, 2};
+
     //Porta do lado esquerdo
     glPushMatrix();
-    glColor3f(0.11f,0.09f,0.043f);
+    //glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(-5.6f, 1.9f, -9.0f);
     glScalef(1.8, 3.8, 0.3f);
-    glutSolidCube(1.0);
+    drawCube(1.0f, chair_texture);
     glPopMatrix();            
     
     //Desenha janelinha 1
@@ -727,10 +729,10 @@ void drawDoor() {
 
     //Porta do lado direito
     glPushMatrix();
-    glColor3f(0.11f,0.09f,0.043f);
+    //glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(5.1f, 1.9f, -9.0f);
     glScalef(2.2, 3.8, 0.3f);
-    glutSolidCube(1.0);
+    drawCube(1.0f, chair_texture);
     glPopMatrix();           
     
     //Desenha janelinha 1
@@ -791,12 +793,12 @@ void drawDoor() {
     
     //porta direita principal
     glPushMatrix();
-    glColor3f(0.11f,0.09f,0.043f);
+    //glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(1.7f, 0.945f, -1.8f);
     glRotatef(right_door_angle, 0, 1, 0);
     glTranslatef(-1.0f, -0.01f, -0.2f);
     glScalef(1.5, 1.86, 0.3f);
-    glutSolidCube(1.0);
+    drawCube(1.0f, chair_texture);
     glPopMatrix();  
     
 //Desenha borda superior da porta (DIREITA)
@@ -809,12 +811,12 @@ void drawDoor() {
 
     //porta esquerda principal
     glPushMatrix();
-    glColor3f(0.11f,0.09f,0.043f);
+    //glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(-0.95f, 0.93f, -2.1f);
     glRotatef(left_door_angle, 0, 1, 0);
     glTranslatef(-0.85f, 0.0f, -0.1f);
     glScalef(1.45, 1.9, 0.3f);
-    glutSolidCube(1.0);
+    drawCube(1.0f, chair_texture);
     glPopMatrix();     
     
 //Desenha borda superior da porta (ESQUERDA)
@@ -859,13 +861,14 @@ void drawDoor() {
 }
 
 void drawWindows() {
-    
+    int chair_texture[] = {2, 2, 2, 2, 2, 2};
+
     //1° Janela principal
     glPushMatrix();
-    glColor3f(0.11f,0.09f,0.043f);
+    //glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(-2.2f, 5.1f, -2.0f);
     glScalef(1.2, 2.5, 0.3f);
-    glutSolidCube(1.0);
+    drawCube(1.0f, chair_texture);
     glPopMatrix();      
     
     //Desenha janelinha 1
@@ -918,10 +921,10 @@ void drawWindows() {
 
     //2° Janela principal
     glPushMatrix();
-    glColor3f(0.11f,0.09f,0.043f);
+    //glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(1.2f, 5.1, -2.0f);
     glScalef(1.2, 2.5, 0.3f);
-    glutSolidCube(1.0);
+    drawCube(1.0f, chair_texture);
     glPopMatrix();           
     
     //Desenha janelinha 1
@@ -974,10 +977,10 @@ void drawWindows() {
 
     //3° Janela principal
     glPushMatrix();
-    glColor3f(0.11f,0.09f,0.043f);
+    //glColor3f(0.11f,0.09f,0.043f);
     glTranslatef(-0.5f, 5.1f, -2.0f);
     glScalef(1.2, 2.5, 0.3f);
-    glutSolidCube(1.0);
+    drawCube(1.0f, chair_texture);
     glPopMatrix();            
     
     //Desenha janelinha 1
@@ -1033,7 +1036,7 @@ void drawFloor() {
 
   //piso-templo
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[7]);	 
+  glBindTexture(GL_TEXTURE_2D, texture_id[8]);	 
   glTranslatef(0.0f, 0.0f, -13.0f);
   glBegin(GL_QUADS);
   glColor3f(1.0f, 1.0f, 1.0f);
@@ -1051,7 +1054,7 @@ void drawFloor() {
   
   //gramado lado esquerdo
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+  glBindTexture(GL_TEXTURE_2D, texture_id[8]);
   glTranslatef(-5.0f, 0.0f, 6.25f);
   glBegin(GL_QUADS);
   glColor3f(0.0f, 0.3f, 0.0f);
@@ -1069,7 +1072,7 @@ void drawFloor() {
   
   //gramado lado direito
   glPushMatrix();
-  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+  glBindTexture(GL_TEXTURE_2D, texture_id[8]);
   glTranslatef(3.25f, 0.0f, 4.5f);
   glBegin(GL_QUADS);
   glColor3f(0.0f, 0.3f, 0.0f);
@@ -1214,6 +1217,48 @@ float fraction_2 = 0.1f;
   }
 }
 
+void loadTextureFromFile(char const *filename,int index) {
+  int width, height, c;
+  c = 3;
+  std::ifstream file(filename);
+  if(! file.good())
+    throw "file not found";
+  file.close();
+
+sf::Image image;
+image.loadFromFile(filename);
+
+    printf("%d %d\n", width, height);
+
+  glGenTextures(1, &texture_id[index]);
+  glBindTexture(GL_TEXTURE_2D, texture_id[index]);
+
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+  glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void initTextures(){
+	loadTextureFromFile("texture/piso-escada.jpg", 0);
+	loadTextureFromFile("texture/grass.jpg", 1);
+	loadTextureFromFile("texture/tabaco.jpg", 2);
+	loadTextureFromFile("texture/airc.jpg", 3);
+	loadTextureFromFile("texture/projetor.jpg", 4);
+	loadTextureFromFile("texture/slide_projetor.png", 5);
+	loadTextureFromFile("texture/fachada-lt.png", 6);
+	loadTextureFromFile("texture/piso-templo.jpg", 7);
+	loadTextureFromFile("texture/piso-entrada.jpg", 8);
+	loadTextureFromFile("texture/mesa.jpg", 9);
+	loadTextureFromFile("texture/fachada-teto.png", 10);
+	loadTextureFromFile("texture/inferior-cruz.png", 11);
+	loadTextureFromFile("texture/superior-cruz.png", 12);
+	loadTextureFromFile("texture/parede-pulpito.jpg", 13);
+	loadTextureFromFile("texture/parede-lateral.jpg", 14);
+    loadTextureFromFile("texture/jesus.jpg", 15);
+	
+}
 	
 void init() {
   glClearColor(0.7, 1.0, 1.0, 0.0);
@@ -1237,7 +1282,7 @@ void init() {
   glLoadIdentity();
   glOrtho(0, WIDTH, 0, HEIGHT, -1, 1);
 
-  
+  initTextures();
 }
 
 void reshape(GLsizei width, GLsizei height)
