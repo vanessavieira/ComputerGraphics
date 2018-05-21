@@ -319,6 +319,7 @@ void drawChair(float x, float z) {
 void drawTemple() {
 
 int chair_texture[] = {2, 2, 2, 2, 2, 2};
+int wall_texture[] = {16, 16, 16, 16, 16, 16};
 
 //Pirâmide esquerda
 float a = 0.4f;
@@ -371,7 +372,7 @@ glEnd();
     glTranslatef(5.0f, 3.0f, -9.25f); 
     glScalef(10.0, 12.0, 1.0);  
     glColor3f(0.917,0.8431,0.7372);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha 1° linha horizontal da parede frontal da direita da entrada
@@ -379,7 +380,7 @@ glEnd();
     glTranslatef(5.0f, 5.9f, -8.9f); 
     glScalef(10.0, 0.5, 0.6);  
     glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha 2° linha horizontal da parede frontal da direita da entrada
@@ -387,7 +388,7 @@ glEnd();
     glTranslatef(5.0f, 4.9f, -8.9f); 
     glScalef(10.0, 0.5, 0.6);  
     glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha 1° linha vertical da parede frontal da direita da entrada
@@ -395,7 +396,7 @@ glEnd();
     glTranslatef(2.9f, 3.0f, -8.9f); 
     glScalef(0.8, 12.0, 0.8);  
     glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha 2° linha vertical da parede frontal da direita da entrada
@@ -404,7 +405,7 @@ glEnd();
     glScalef(0.8, 12.0, 0.8);  
     glRotatef(-90.0f, 0,0 , 1);
     glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha parede lateral direita da entrada    
@@ -412,7 +413,7 @@ glEnd();
     glTranslatef(2.5f, 3.75f, -5.5f);
     glScalef(0.5, 7.5, 7.0);  
     glColor3f(0.917,0.8431,0.7372);
-    glutSolidCube(1.0);
+    drawCube(1.0f, wall_texture);
     glPopMatrix();
 
 //Desenha parede frontal da esquerda da entrada
@@ -420,7 +421,7 @@ glEnd();
     glTranslatef(-5.5f, 3.0f, -9.25f); 
     glScalef(8.0, 12.0, 1.0);  
     glColor3f(0.917,0.8431,0.7372);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha 1° linha horizontal da parede frontal da esquerda da entrada
@@ -428,7 +429,7 @@ glEnd();
     glTranslatef(-5.5f, 5.9f, -8.9f); 
     glScalef(8.0, 0.5, 0.6);  
     glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha 2° linha horizontal da parede frontal da esquerda da entrada
@@ -436,7 +437,7 @@ glEnd();
     glTranslatef(-5.5f, 4.9f, -8.9f); 
     glScalef(8.0, 0.5, 0.6);  
     glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha 1° linha vertical da parede frontal da esquerda da entrada
@@ -444,7 +445,7 @@ glEnd();
     glTranslatef(-7.3f, 3.0f, -8.9f);
     glScalef(0.8, 12.0, 0.8);  
     glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha 2° linha vertical da parede frontal da esquerda da entrada
@@ -453,7 +454,7 @@ glEnd();
     glScalef(0.8, 12.0, 0.8);  
     glRotatef(-90.0f, 0,0 , 1);
     glColor3f(0.745,0.423,0.188);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha parede lateral esquerda da entrada  
@@ -461,7 +462,7 @@ glEnd();
     glTranslatef(-3.5f, 3.75f, -5.5f);
     glScalef(0.5, 7.5, 7.0);  
     glColor3f(0.917,0.8431,0.7372);
-    glutSolidCube(1.0);
+    drawCube(1.0f, wall_texture);
     glPopMatrix();
     
 //Desenha parede da porta de entrada da igreja 1/4
@@ -469,7 +470,7 @@ glEnd();
     glTranslatef(-0.5f, 4.78f, -2.25f); 
     glScalef(12.9, 11.0, 1.0);  
     glColor3f(0.917,0.8431,0.7372);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha parede da porta de entrada da igreja 2/4
@@ -478,7 +479,7 @@ glEnd();
     glScalef(2.2, 4.55, 1.0);  
     glColor3f(0.917,0.8431,0.7372);
     //glColor3f(0.0,0.0,0.0);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha parede da porta de entrada da igreja 3/4
@@ -486,7 +487,7 @@ glEnd();
     glTranslatef(-0.5f,0.9f, -2.25f); 
     glScalef(1.8, 4.55, 1.0);  
     glColor3f(0.917,0.8431,0.7372);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha parede da porta de entrada da igreja 4/4
@@ -494,7 +495,7 @@ glEnd();
     glTranslatef(1.9f,0.9f, -2.25f); 
     glScalef(1.8,4.55, 1.0);  
     glColor3f(0.917,0.8431,0.7372);
-    glutSolidCube(0.5);
+    drawCube(0.5f, wall_texture);
     glPopMatrix();
     
 //Desenha ponta da igreja
@@ -579,7 +580,7 @@ glEnd();
     glColor3f(0.917,0.8431,0.7372);
     glTranslatef(7.25f, 2.75f, -20.5f);
     glScalef(0.5, 5.5, 23.0);
-    glutSolidCube(1.0f);
+    drawCube(1.0f, wall_texture);
     glPopMatrix();
     
 //Parede lateral direita
@@ -587,7 +588,7 @@ glEnd();
     glColor3f(0.917,0.8431,0.7372);
     glTranslatef(-7.25f, 2.75f, -20.5f);
     glScalef(0.5, 5.5, 23.0);
-    glutSolidCube(1.0f);
+    drawCube(1.0f, wall_texture);
     glPopMatrix();
 
 //parede do fundo do templo 
@@ -595,7 +596,7 @@ glEnd();
     glColor3f(0.9,0.9,0.9);
     glTranslatef(0.0f, 2.75f, -31.75f);
     glScalef(14.5, 5.5, 0.5); 
-    glutSolidCube(1.0);
+    drawCube(1.0f, wall_texture);
     glPopMatrix();
 
 //teto do templo
@@ -603,7 +604,7 @@ glEnd();
     glColor3f(0.66f,0.66f,0.66f);
     glTranslatef(0.0f, 5.75f, -20.75f);
     glScalef(15.0, 0.5, 22.5);
-    glutSolidCube(1.0);
+    drawCube(1.0f, wall_texture);
     glPopMatrix();
 
 //teto interno entrada do templo (DIREITA)
@@ -1257,6 +1258,7 @@ void initTextures(){
 	loadTextureFromFile("texture/parede-pulpito.jpg", 13);
 	loadTextureFromFile("texture/parede-lateral.jpg", 14);
     loadTextureFromFile("texture/jesus.jpg", 15);
+    loadTextureFromFile("texture/parede-interna.jpg", 16);
 	
 }
 	
